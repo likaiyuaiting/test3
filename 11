@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+	char  ch[2000], acm[3] = {'a','c','m'};
+	int i,j, k,s=0,n=0,b=1;
+	printf("输入字符串:");
+	for(i=0;i<2000;i++)
+	{	
+		scanf("%c", &ch[i]);
+		if(ch[i]=='l')
+			break;
+		s=i;
+	}
+	printf("\n");
+	for (i = 0; i < s; i++)
+	{
+		for (j =1; j < s; j++)
+		{
+			for (k =2; k < s; k++)
+			{
+				if ((i < j&&j < k) && (ch[i] == acm[0] && ch[j] == acm[1] && ch[k] == acm[2]))
+					n++;
+			}
+		}
+	}
+	printf("%d", n);
+	system("pause");
+	return 0;
+}
