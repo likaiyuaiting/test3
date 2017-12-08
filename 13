@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int add(int x,int y)
+{
+	int cut=0;
+	cut=x+y;
+	return cut;
+}
+int main(int argc, char *argv[]) {
+	
+	int a=10;
+	int b=20;
+	int sum=0;
+	sum=add(a,b); 
+	return 0;
+}
