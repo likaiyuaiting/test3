@@ -1,0 +1,18 @@
+//输出1+1/(1+1/(1+1/(1+1/(1+1/(1+1/(1+1/(1+1/a)))))))
+#include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+	int n;
+	double a,s;
+	printf("输入多分式分号个数n,以及基数a(1--9)：");
+	scanf("%d%lf",&n,&a);
+	s = 1 + 1 / a;
+	while (n--)
+	{
+		s = 1 + 1 / s;
+	}
+	printf("%ld",s);
+	system("pause");
+	return 0;
+}
