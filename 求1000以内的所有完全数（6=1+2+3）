@@ -1,0 +1,34 @@
+// 题.cpp : Defines the entry point for the console application.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int main()
+{
+	int i, t, s, a = 2.0;
+	printf("1000以内有以下几个完全数：\n");
+	while (a < 1000)
+	{
+		s = 1;
+		i = 2;
+		t = (int)sqrt(a);//求A得平方根的取整
+		do
+		{
+			if (a%i == 0) s += i + a / t;
+			i++;
+		} while (i < t);
+		if (t*t == a) s += t;//判断A是不是完全平方数
+		if (s == a)        //输出完全数及其因子
+		{
+			printf("%d=1", a);
+			for (i = 2; i < a; i++)
+			if (a%i == 0) printf("+%d", i);
+			printf("\n");
+		}
+		a++;
+	}
+
+	system("pause");
+	return 0;
+}
