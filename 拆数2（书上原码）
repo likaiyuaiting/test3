@@ -1,0 +1,80 @@
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#if 0
+/*
+1、设该整数为N，定义变量begin，表示候选序列的起点；
+2、让begin从1开始，到N-1为止，判断能否从begin开始构造一个符合要求的序列；
+3、判断方法：累加编程模式。
+*/
+
+int main()
+{
+	int N, begin, num, sum, i, j;
+
+	printf("请输入一个整数：");
+	scanf("%d", &N);
+	num = 0;
+	for (begin = 1; begin < N; begin++)
+	{
+		//判断能否从begin开始构造一个符合要求的序列
+		sum = 0;
+		for (i = begin; i < N; i++)
+		{
+			sum += i;
+			if (sum == N)
+			{
+				num++;
+				printf("%d = %d", N, begin);
+				for (j = begin + 1; j <= i; j++) printf(" + %d", j);
+				printf("\n");
+			}
+			else if (sum > N) break;
+		}
+	}
+	if (num == 0) printf("None\n");
+	system("pause");
+	return 0;
+}
+#endif
+
+
+#if 1
+/*
+1、1 <= begin < N/2；
+2、m个连续的整数之和，可以用公式来计算，若它等于N，还可反推起点；
+   x + (x+1) + … + (x+m-1) = m*x + m(m-1)/2
+   x = N/m – (m-1)/2
+3、相同长度的序列，最多仅有一个。
+*/
+
+
+
+int main()
+{
+	int N, begin, m, j, sum, num;
+	printf("请输入一个整数：");
+	scanf("%d", &N);
+	num = 0;
+	for (m = 2;; m++)
+	{
+		begin = N / m - (m - 1) / 2;
+		if (begin < 1) break;
+		sum = m*begin + m*(m - 1) / 2;
+		if (sum == N)
+		{
+			num++;
+			printf("%d = %d", N, begin);
+			for (j = 1; j<m; j++) printf(" + %d", begin + j);
+			printf("\n");
+		}
+	}
+	if (num == 0) printf("None\n");
+	system("pause");
+	return 0;
+}
+
+
+
+#endif
