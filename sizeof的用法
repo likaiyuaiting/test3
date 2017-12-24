@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main(void)
+{
+	int a,arr[5] = { 10,20,30 };
+	int  cont size = 10;
+	int const *po = &a;
+	char mystr[] = "bhygtfred\n";
+	char *p = mystr;
+	a = 6;
+	printf("%5d%5d%5d\n", sizeof(int), sizeof(unsigned int), sizeof(arr));
+	printf("%5d%5d\n", sizeof(char), sizeof(mystr));
+	printf("%5d%5d%5d%5d\n", sizeof(p), sizeof(*p), strlen(p),*po);
+	system("pause");
+	return 0;
+}
