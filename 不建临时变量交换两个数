@@ -1,0 +1,20 @@
+// 不建临时变量交换两个数.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include<stdio.h>  
+#include<stdlib.h>
+
+int main()
+{
+	int num1, num2 ;
+	printf("请输入两个要交换的整数：");
+	scanf("%d%d",&num1,&num2);
+	num1 = num1 + num2;
+	num2 = num1 - num2;
+	num1 = num1 - num2;
+	/*相同方法:将“+”“-”换成“*”“/”*/
+	printf("交换后：%d %d\n", num1, num2);
+	system("pause");
+	return 0;
+}
