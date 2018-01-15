@@ -1,0 +1,66 @@
+    #include <iostream>  
+      
+    using namespace std;  
+      
+    /* 
+    方法一：递归方式；顺时针循环打印，一圈一圈的打印，先右，再下，再左，再上；打完一圈再打内圈，当不符合条件时，结束。 
+    参数：numbers:二维矩阵；columns：矩阵的列数；rows：矩阵的行数；start：一圈开始的左上角的坐标值(x、y坐标是相同的，例如5X5,第一圈左上角(start,start)即为(0,0)...) 
+    */  
+    void PrintMatrix(int **number, int columns, int rows, int start=0)  
+    {  
+        if( !number || columns < 1 || rows < 1 || start < 0 )   
+            return;  
+        if( columns <= 2*start || rows <= 2*start )   
+            return;  
+      
+        int stopX = columns - 1 - start;//一圈最右列在坐标中的位置  
+        int stopY = rows - 1 - start;//一圈最大行在坐标中位置  
+      
+        //打印此圈中的最上行  
+        for( int i=start; i<=stopX; i++)  
+            cout <<number[start][i]<<" ";  
+        //打印此圈中的最右列  
+        if(start < stopX) //如果此圈中不止有一列  
+            for(int i=start+1; i<=stopY; i++)  
+                cout<<number[i][stopX]<<" ";  
+        //打印次圈中的最下行  
+        if(start < stopX && start < stopY)  
+            for(int i=stopX-1; i >= start; i--)  
+                cout<<number[stopY][i]<<" ";  
+        //打印次圈中的最左行  
+        if(start < stopX && start < stopY - 1)  
+            for(int i=stopY-1; i >= start+1; i--)  
+                cout<<number[i][start]<<" ";  
+        PrintMatrix(number, columns, rows, start+1);//下一圈循环  
+    }  
+    void Test(int columns, int rows)  
+    {  
+        cout<<"Test Begin:"<<columns<<" columns,"<<rows<<" rows."<<endl;  
+        if(columns < 1 || rows < 1)  
+            return;  
+      
+        int** numbers = new int*[rows];  
+        for(int i = 0; i < rows; ++i)  
+        {  
+            numbers[i] = new int[columns];  
+            for(int j = 0; j < columns; ++j)  
+            {  
+                numbers[i][j] = i * columns + j + 1;  
+            }  
+      
+        }  
+          
+        PrintMatrix(numbers, columns, rows);  
+        cout<<endl;  
+        for(int i = 0; i < rows; ++i)  
+            delete[] (int*)numbers[i];  
+        delete[] numbers;  
+    }  
+    int main()  
+    {  
+        Test(1,1);  
+        Test(2,2);  
+        Test(4,5);  
+        Test(5,5);  
+        return 0;  
+    }  
