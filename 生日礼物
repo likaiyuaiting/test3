@@ -1,0 +1,47 @@
+#include<cstdio>
+#include<algorithm>
+#include<iostream>
+#include<cstring>
+#include<string>
+#include<cstdlib>
+#include<cmath>
+using namespace std;
+struct ldx{
+    int x,num;
+    bool operator < (const ldx &p) const{
+        if(p.num!=num) return num<p.num;
+        else return x<p.x;
+    }
+}s[1000005];
+int pa[65];
+int ans=2147483640,pb,n,k,lo=0;
+int main(){
+    int T,r=0;
+    scanf("%d%d",&n,&k);
+    for(int i=1;i<=k;i++){
+        scanf("%d",&T);
+        for(int j=1;j<=T;j++){
+            lo++;s[lo].x=i;
+            scanf("%d",&s[lo].num);  
+        }
+    }
+    sort(s+1,s+n+1);
+    for(int i=1;i<=n;i++){
+
+        while(pa[s[i].x]>1){
+            pa[s[i].x]--;
+            i++;
+        }
+        while(pb<k && r<=n){
+            r++;
+            if(!pa[s[r].x]) pb++;
+            pa[s[r].x]++;
+        }
+        if(r>n) break;
+        pa[s[i].x]--;if(!pa[s[i].x]) pb--;
+        ans=min(ans,s[r].num-s[i].num);
+    }
+
+    printf("%d",ans);
+    return 0;
+}
