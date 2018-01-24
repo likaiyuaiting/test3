@@ -1,0 +1,47 @@
+#include<cstdio>
+#include<iostream>
+#include<cstring>
+#include<string>
+#include<algorithm>
+#include<cmath>
+#include<cstdlib>
+using namespace std;
+struct ldx{
+    int x,y,num;
+    bool operator < (const ldx &p) const{
+        return num<p.num;
+    }
+}s[5005];
+int f[505];
+int n,m,q,t,sans=50000,xans=1;
+int zh(int x){
+    if(x==f[x]) return x;
+    else return f[x]=zh(f[x]);
+}
+void solve(int xx,int yy){
+    int r1=__gcd(xx,yy);
+    xx/=r1;yy/=r1;
+    if(xx*xans<yy*sans) {sans=xx;xans=yy;}
+}
+int main(){
+    scanf("%d%d",&n,&m);    
+    for(int i=1;i<=m;i++) 
+    scanf("%d%d%d",&s[i].x,&s[i].y,&s[i].num);
+    scanf("%d%d",&q,&t);
+    sort(s+1,s+m+1);
+
+    for(int i=1;i<=m;i++){
+        for(int j=1;j<=n;j++) f[j]=j;
+        for(int j=i;j<=m;j++){
+            int r1=zh(s[j].x),r2=zh(s[j].y);
+            if(r1!=r2) f[r1]=r2;
+            r1=zh(q);r2=zh(t); 
+            if(r1==r2) {solve(s[j].num,s[i].num);break;}
+        }   
+    }
+
+    if(sans==50000) printf("IMPOSSIBLE");
+    else if(xans==1) printf("%d",sans);
+    else printf("%d/%d",sans,xans);
+    return 0;
+}
