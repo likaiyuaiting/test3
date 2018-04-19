@@ -1,0 +1,9 @@
+Gentoo 最初由Daniel Robbins（前Stampede Linux和FreeBSD的开发者之一）创建。由于开发者对FreeBSD的熟识，所以 Gentoo拥有媲美 FreeBSD的广受美誉的ports系统 ——portage。（Ports和Portage都是用于在线更新软件的系统，类似 apt-get，但还是有很大不同）Gentoo的首个稳定版本发布于2002年。
+
+　　Gentoo的出名是因为其高度的自定制性：因为它是一个基于源代码的（source-based）发行版。尽管安装时可以选择预先编译好的软件包，但是 大部分使用Gentoo的用户都选择自己手动编译。这也是为什么Gentoo适合比较有Linux使用经验的老手使用的原因。但是要注意的是，由于编译软 件需要消耗大量的时间，所以如果你所有的软件都自己编译，并安装KDE桌面系统等比较大的软件包，可能需要几天时间才能编译完……
+
+　　优点：高度的可定制性，完整的使用手册，媲美Ports的Portage系统，适合“臭美”的高手使用
+
+　　缺点：编译耗时多，安装缓慢
+
+　　官方主页：http://www.gentoo.org/
