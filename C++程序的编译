@@ -1,0 +1,7 @@
+　假设用vi编写好了一个C++程序，源程序文件名为hello.cxx。如何编译？编译，指定生成的可执行文件名为hw。
+
+　　g++ -o hw hello.cxx
+
+　　带源代码调试符号进行编译。
+
+　　g++ -o hw hello.cxx -g
