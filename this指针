@@ -1,0 +1,47 @@
+class Student_2{
+    private String name;
+    private int age;
+    /*
+     分析：
+     下列两个构造函数，一是初始化姓名，二是初始化姓名加年龄。 发现功能重复 因此我们在二构造函数中 是否只需调用一构造函数便可以了？
+     因此 我们可以进行一号尝试。
+     */
+    Student_2(String name)//构造函数
+    {
+        this.name = name;
+    }
+
+    Student_2(String name,int age)
+    {
+        //this.name = name;
+        //1号尝试 构造函数调用构造函数
+        //Student_2(name);
+        /*
+         报错。因为 一个类当中，它的所有的成员，只要想运行，都必须要对象调用 除了静态之外。
+         当未出现同名变量，不需要你特地写出关键字this代表对象时，系统会默认并省略this。
+         即其实类中的所有成员之前都会有一个默认的this。 这一行代码也是。
+
+         因此，系统中的代码其实是 this.Student_2(name) this代表对象，构造函数是给对象初始化的。Student在this后面  student还未给对象初始化，怎么能调用呢？ 因此报错。
+
+         那怎么写呢？     如下。
+         */
+        this(name);
+        this.age = age;
+        /*
+         此外，我们可以经过试验可发现 this只能定义在构造函数的第一行。
+         */
+    }
+
+    public void speak()
+    {
+        System.out.println(name+":"+age);
+    }
+}
+public class Demo_7 {
+
+    public static void main(String[] args) {
+        Student_2 p = new Student_2("旺财");
+        p.speak();
+    }
+
+}
