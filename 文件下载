@@ -1,0 +1,21 @@
+    @RequestMapping(value="/download")  
+        public ResponseEntity<byte[]> down(HttpServletRequest request,  
+                @RequestParam("filename") String filename,  
+                Model model)throws Exception{  
+              
+            //下载路径  
+            String path=request.getServletContext().getRealPath("/imag/");  
+              
+            File file=new File(path+File.separator+filename);  
+            HttpHeaders headers=new HttpHeaders();  
+              
+            //下载显示的文件名，解决中文名称乱码问题  
+            String downloadfilename=new String(filename.getBytes("UTF-8"),"iso-8859-1");  
+              
+            //通知浏览器以attachment (下载方式)打开图片  
+            headers.setContentDispositionFormData("attachment", downloadfilename);  
+              
+              
+              
+            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers,HttpStatus.CREATED);  
+        }  
