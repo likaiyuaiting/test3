@@ -1,0 +1,24 @@
+   在一个类中，有三种不同访问属性的成员：public、protected、private。
+
+    在类的内部（类的声明和类的定义）可以访问public、protected、private所有成员
+
+    在类的外部（对象和其他函数）不能访问private和protected成员
+
+    在继承中的三种不同的派生方式，对派生类对基类成员的访问属性得改变：
+
+        public：
+        public ->public;
+        protected->protected;
+        private->不可访问;
+
+        protected:
+        public->protected;
+        protected->protected;
+        private->不可访问;
+
+        private:
+        public->private;
+        protected->private;
+        private->不可访问;
+
+    基类成员在派生类中的访问属性按照上面的方式改变，改变之后继承自基类的private成员在派生类中不能被访问，只能通过基类的protected或者public成员函数访问。而其他的访问方式同本文开头。
