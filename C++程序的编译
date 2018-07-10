@@ -5,4 +5,5 @@
 
 　　带源代码调试符号进行编译。
 
-　　g++ -o hw hello.cxx -g
+　　
+  g++ -o hw hello.cxx -g
